@@ -31,10 +31,11 @@ app.get("/players", (req, res) => {
 })
 
 
-app.get("/deleteplayer", (req, res) => {
+app.delete("/deleteplayer", (req, res) => {
     //removePlayerId = req.params.removePlayerId
     removePlayerId = req.body.id
-    res.send(deletePlayer(removePlayerId))
+    deletePlayer(removePlayerId)
+    res.send("Player deleted")
 })
 
 app.post("/addplayer", (req, res) => {
