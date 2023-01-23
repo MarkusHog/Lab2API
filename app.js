@@ -33,7 +33,7 @@ app.get("/players", (req, res) => {
 
 app.delete("/deleteplayer", (req, res) => {
     //removePlayerId = req.params.removePlayerId
-    removePlayerId = req.body.id
+    removePlayerId = req.params.id
     deletePlayer(removePlayerId)
     res.send("Player deleted")
 })
