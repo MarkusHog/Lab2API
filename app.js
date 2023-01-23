@@ -34,7 +34,7 @@ app.get("/deleteplayer/:removePlayerId", (req, res) => {
     res.send(deletePlayer(removePlayerId))
 })
 
-app.get("/addPlayer/:addName/:addPosition/:addTeam", (req, res) => {
+app.post("/addPlayer/:addName/:addPosition/:addTeam", (req, res) => {
     addName = req.params.addName
     addPosition = req.params.addPosition
     addTeam = req.params.addTeam
