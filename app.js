@@ -8,6 +8,7 @@ const { send } = require("process")
 const app = express()
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
+app.use(bodyParser.json())
 app.use(express.json())
 const PORT = process.env.PORT || 3000
 
