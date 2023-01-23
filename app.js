@@ -8,6 +8,7 @@ const { send } = require("process")
 const app = express()
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
+app.use(express.json())
 const PORT = process.env.PORT || 3000
 
 const players = {
@@ -34,10 +35,10 @@ app.get("/deleteplayer/:removePlayerId", (req, res) => {
     res.send(deletePlayer(removePlayerId))
 })
 
-app.post("/addPlayer/:addName/:addPosition/:addTeam", (req, res) => {
-    addName = req.params.addName
-    addPosition = req.params.addPosition
-    addTeam = req.params.addTeam
+app.post("/addPlayer/", (req, res) => {
+    addName = req.body.Name
+    addPosition = req.body.Position
+    addTeam = req.body.Team
     res.send(addPlayer(addName, addPosition, addTeam))
 });
 
