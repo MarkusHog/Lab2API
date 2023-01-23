@@ -8,7 +8,7 @@ const { send } = require("process")
 const app = express()
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
-app.use(bodyParser.json())
+app.use(bodyParser.json({extended: true}))
 app.use(express.json())
 const PORT = process.env.PORT || 3000
 
@@ -40,7 +40,7 @@ app.post("/addplayer", (req, res) => {
     addName = req.body.Name
     addPosition = req.body.Position
     addTeam = req.body.Team
-    addPlayer(addName,addPosition,addTeam)
+    addPlayer(addName, addPosition, addTeam)
     res.send("player "+ addName + "added")
 });
 
