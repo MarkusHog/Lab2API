@@ -31,8 +31,9 @@ app.get("/players", (req, res) => {
 })
 
 
-app.get("/deleteplayer/:removePlayerId", (req, res) => {
-    removePlayerId = req.params.removePlayerId
+app.get("/deleteplayer", (req, res) => {
+    //removePlayerId = req.params.removePlayerId
+    removePlayerId = req.body.id
     res.send(deletePlayer(removePlayerId))
 })
 
@@ -41,7 +42,7 @@ app.post("/addplayer", (req, res) => {
     addPosition = req.body.position
     addTeam = req.body.team
     addPlayer(addName, addPosition, addTeam)
-    res.send("player "+ addName + "added")
+    res.send("player "+ addName + " added")
 });
 
 app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
@@ -77,7 +78,7 @@ function deletePlayer(removePlayerId) {
 
             players.allPlayers.splice(i, 1)
             idExist = true;
-            return players
+            return "player deleted"
         }
     }
     if (idExist == false) {
