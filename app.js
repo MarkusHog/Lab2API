@@ -31,7 +31,7 @@ app.get("/players", (req, res) => {
 })
 
 
-app.delete("/players", (req, res) => {
+app.delete("/deleteplayer/id", (req, res) => {
     //removePlayerId = req.params.removePlayerId
     removePlayerId = req.query.id
     deletePlayer(removePlayerId)
