@@ -81,11 +81,11 @@ function getPlayerById(playerId){
     for (var i = 0; i < players.allPlayers.length; i++) {
         if (players.allPlayers[i].id == playerId) {
 
-            return send(players[i])
+            return players[i]
             
             
         }
-        return send("Player not found")
+        return "Player not found"
     }
 }
 
