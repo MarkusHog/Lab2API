@@ -35,7 +35,7 @@ app.delete("/deleteplayer/:id", (req, res) => {
     //removePlayerId = req.params.removePlayerId
     removePlayerId = req.params.id
     deletePlayer(removePlayerId)
-    res.send("Player " + req.query.id + " deleted")
+    res.send("Player " + req.params.id + " deleted")
 })
 
 app.post("/addplayer", (req, res) => {
