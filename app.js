@@ -29,6 +29,11 @@ app.get("/", (req, res) => {
 app.get("/players", (req, res) => {
     res.send(players)
 })
+app.get("/players/:id", (req, res) => {
+    playerId = req.params.id
+    res.send(getPlayerById(playerId))
+    
+})
 
 
 app.delete("/deleteplayer/:id", (req, res) => {
@@ -36,6 +41,7 @@ app.delete("/deleteplayer/:id", (req, res) => {
     removePlayerId = req.params.id
     deletePlayer(removePlayerId)
     res.send("Player " + req.params.id + " deleted")
+    res.sendFile(__dirname + "/index.html")//
 })
 
 app.post("/addplayer", (req, res) => {
@@ -68,6 +74,18 @@ function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
     }
     if (idExist == false) {
         return "Id does not exist"
+    }
+}
+
+function getPlayerById(playerId){
+    for (var i = 0; i < players.allPlayers.length; i++) {
+        if (players.allPlayers[i].id == playerId) {
+
+            return send(players[i])
+            
+            
+        }
+        return send("Player not found")
     }
 }
 
