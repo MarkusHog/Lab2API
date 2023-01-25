@@ -30,7 +30,7 @@ app.get("/players", (req, res) => {
     res.send(players)
 })
 app.get("/players/:id", (req, res) => {
-    playerId = req.params.id
+    playerId = Number(req.params.id)
     console.log(playerId)
     res.send(getPlayerById(playerId))
     
