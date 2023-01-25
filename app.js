@@ -73,10 +73,13 @@ function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
     for (var i = 0; i < players.allPlayers.length; i++) {
         if (updateId == players.allPlayers[i].id) {
             idExist = true;
-            removePlayerId = updateId;
-            deletePlayer(removePlayerId)
-            players.allPlayers.push({ id: updateId, name: updateName, position: updatePosition, team: updateTeam })
-            return "Player " + updateId + " updated"
+            //index = i;
+            //removePlayerId = updateId;
+            //deletePlayer(removePlayerId)
+            //players.allPlayers.push({ id: updateId, name: updateName, position: updatePosition, team: updateTeam })
+            updatedPlayer = {id: updateId, name: updateName, position: updatePosition, team: updateTeam}
+            players.allPlayers[i] = updatedPlayer
+            return updatedPlayer
         }
 
     }
