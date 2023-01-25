@@ -83,7 +83,7 @@ function getPlayerById(playerId){
     for (var i = 0; i < players.allPlayers.length; i++) {
         if (players.allPlayers[i].id == playerId) {
             idExist = true
-            playerToReturn = players[i]
+            playerToReturn = players.allPlayers[i]
             return playerToReturn
             
             
