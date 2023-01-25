@@ -141,15 +141,15 @@ app.listen(PORT, () => {
 })
 
 
-document.getElementById("btnSubmit").addEventListener("click", addPlayerHTML)
+// document.getElementById("btnSubmit").addEventListener("click", addPlayerHTML)
 
-function addPlayerHTML(){
+// function addPlayerHTML(){
 
-    document.getElementById("name").innerHTML = addName;
-    document.getElementById("position").innerHTML = addPosition;
-    document.getElementById("team").innerHTML = addTeam;
+//     document.getElementById("name").innerHTML = addName;
+//     document.getElementById("position").innerHTML = addPosition;
+//     document.getElementById("team").innerHTML = addTeam;
 
-    addPlayer(addName, addPosition, addTeam)
-}
+//     addPlayer(addName, addPosition, addTeam)
+// }
 
 
