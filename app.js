@@ -78,6 +78,7 @@ function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
 }
 
 function getPlayerById(playerId){
+    console.log(playerId)
     let idExist = false;
     for (var i = 0; i < players.allPlayers.length; i++) {
         if (players.allPlayers[i].id == playerId) {
@@ -88,7 +89,7 @@ function getPlayerById(playerId){
             
         }
         if (idExist == false) {
-            return "Id does not exist"
+            return "Id " + playerId + "does not exist"
         }
     }
 }
