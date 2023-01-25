@@ -1,10 +1,10 @@
 
-const { deepStrictEqual } = require("assert")
-const { urlencoded } = require("body-parser")
+////const { deepStrictEqual } = require("assert")
+//const { urlencoded } = require("body-parser")
 const bodyParser = require("body-parser")
-const { publicDecrypt } = require("crypto")
+//const { publicDecrypt } = require("crypto")
 const express = require("express")
-const { send } = require("process")
+//const { send } = require("process")
 const app = express()
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
@@ -30,7 +30,8 @@ app.get("/players", (req, res) => {
     res.send(players)
 })
 app.get("/players/:id", (req, res) => {
-    playerId = req.params.id
+    let playerId = req.params.id
+    console.log(playerId)
     res.send(getPlayerById(playerId))
     
 })
