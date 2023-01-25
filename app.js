@@ -10,7 +10,8 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json({extended: true}))
 app.use(express.json())
-const PORT = process.env.PORT || 3000
+//const PORT = process.env.PORT || 3000
+const PORT = 3000
 
 const players = {
     allPlayers: [
@@ -30,7 +31,7 @@ app.get("/players", (req, res) => {
     res.send(players)
 })
 app.get("/players/:id", (req, res) => {
-    let playerId = req.params.id
+    playerId = req.params.id
     console.log(playerId)
     res.send(getPlayerById(playerId))
     
@@ -38,7 +39,6 @@ app.get("/players/:id", (req, res) => {
 
 
 app.delete("/deleteplayer/:id", (req, res) => {
-    //removePlayerId = req.params.removePlayerId
     removePlayerId = req.params.id
     deletePlayer(removePlayerId)
     res.send("Player " + req.params.id + " deleted")
@@ -82,7 +82,7 @@ function getPlayerById(playerId){
     let idExist = false;
     for (var i = 0; i < players.allPlayers.length; i++) {
         if (players.allPlayers[i].id == playerId) {
-
+            idExist = true
             return players[i]
             
             
