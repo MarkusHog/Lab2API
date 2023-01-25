@@ -74,8 +74,8 @@ function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
         if (updateId == players.allPlayers[i].id) {
             idExist = true;
             removePlayerId = updateId;
-            deletePlayer(removePlayerId)
-            players.allPlayers.push({ id: updateId, name: updateName, position: updatePosition, team: updateTeam })
+            //deletePlayer(removePlayerId)
+            players.allPlayers.put({ id: updateId, name: updateName, position: updatePosition, team: updateTeam })
             return "Player " + updateId + " updated"
         }
 
