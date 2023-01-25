@@ -1,4 +1,3 @@
-
 const { deepStrictEqual } = require("assert")
 const { urlencoded } = require("body-parser")
 const bodyParser = require("body-parser")
@@ -31,7 +30,7 @@ app.get("/players", (req, res) => {
     res.send(players)
 })
 app.get("/players/:id", (req, res) => {
-    playerId = Number(req.params.id)
+    playerId = req.params.id
     console.log(playerId)
     res.send(getPlayerById(playerId))
     
@@ -53,21 +52,13 @@ app.post("/addplayer", (req, res) => {
     res.send("player "+ addName + " added")
 });
 
-// app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
-//     updateId = Number(req.params.updateId)
-//     updateName = req.params.addName
-//     updatePosition = req.params.addPosition
-//     updateTeam = req.params.addTeam
-//     res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
-// })
-app.put("/update/:id", (req, res => {
-    updateId = req.params.id
-    updateName = req.body.name
-    updatePosition = req.body.position
-    updateTeam = req.body.team
-    res.send(updatePlayer(updateId, updateName, updatePosition, updateId))
-    
-}))
+app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
+    updateId = Number(req.params.updateId)
+    updateName = req.params.addName
+    updatePosition = req.params.addPosition
+    updateTeam = req.params.addTeam
+    res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
+})
 
 function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
     let idExist = false;
