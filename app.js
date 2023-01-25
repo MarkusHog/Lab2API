@@ -10,8 +10,8 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json({extended: true}))
 app.use(express.json())
-const PORT = process.env.PORT || 3000
-//const PORT = 3000
+//const PORT = process.env.PORT || 3000
+const PORT = 3000
 
 const players = {
     allPlayers: [
@@ -31,7 +31,7 @@ app.get("/players", (req, res) => {
     res.send(players)
 })
 app.get("/players/:id", (req, res) => {
-    playerId = req.params.id
+    playerId = Number(req.params.id)
     console.log(playerId)
     res.send(getPlayerById(playerId))
     
@@ -53,13 +53,21 @@ app.post("/addplayer", (req, res) => {
     res.send("player "+ addName + " added")
 });
 
-app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
-    updateId = Number(req.params.updateId)
-    updateName = req.params.addName
-    updatePosition = req.params.addPosition
-    updateTeam = req.params.addTeam
-    res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
-})
+// app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
+//     updateId = Number(req.params.updateId)
+//     updateName = req.params.addName
+//     updatePosition = req.params.addPosition
+//     updateTeam = req.params.addTeam
+//     res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
+// })
+app.put("/update/:id", (req, res => {
+    updateId = req.params.id
+    updateName = req.body.name
+    updatePosition = req.body.position
+    updateTeam = req.body.team
+    res.send(updatePlayer(updateId, updateName, updatePosition, updateId))
+    
+}))
 
 function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
     let idExist = false;
