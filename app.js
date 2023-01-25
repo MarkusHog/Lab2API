@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 3000
 
 const players = {
     allPlayers: [
-        { id: 1, name: "Oscar Wendt", posistion: "LD", team: "IFK GÖteborg" },
-        { id: 2, name: "Marcus Berg", posistion: "CF", team: "IFK GÖteborg" },
-        { id: 3, name: "Oliver Berg", posistion: "COM", team: "Kalmar FF" },
-        { id: 4, name: "Pontus Dahlberg", posistion: "GK", team: "IFK GÖteborg" },
-        {id: 5, name: "Lionel Messi", posistion:"AT", team: "PSG"}
+        { id: 1, name: "Oscar Wendt", position: "LD", team: "IFK GÖteborg" },
+        { id: 2, name: "Marcus Berg", position: "CF", team: "IFK GÖteborg" },
+        { id: 3, name: "Oliver Berg", position: "COM", team: "Kalmar FF" },
+        { id: 4, name: "Pontus Dahlberg", position: "GK", team: "IFK GÖteborg" },
+        {id: 5, name: "Lionel Messi", position:"AT", team: "PSG"}
     ]
 }
 
@@ -52,12 +52,20 @@ app.post("/addplayer", (req, res) => {
     res.send("player "+ addName + " added")
 });
 
-app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
-    updateId = Number(req.params.updateId)
-    updateName = req.params.addName
-    updatePosition = req.params.addPosition
-    updateTeam = req.params.addTeam
-    res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
+// app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
+//     updateId = Number(req.params.updateId)
+//     updateName = req.params.addName
+//     updatePosition = req.params.addPosition
+//     updateTeam = req.params.addTeam
+//     res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
+// })
+
+app.put("/update/:id", (req, res) => {
+    updateId = req.params.id
+    updateName = req.body.name
+    updatePosition = req.body.position
+    updateTeam = req.body.team
+    res.send(updatePlayer(updateId,updateName,updatePosition,updateTeam))
 })
 
 function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
@@ -67,8 +75,8 @@ function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
             idExist = true;
             removePlayerId = updateId;
             deletePlayer(removePlayerId)
-            players.allPlayers.push({ id: updateId, name: updateName, posistion: updatePosition, team: updateTeam })
-            return players
+            players.allPlayers.push({ id: updateId, name: updateName, position: updatePosition, team: updateTeam })
+            return "Player " + updateId + " updated"
         }
 
     }
@@ -91,7 +99,7 @@ function getPlayerById(playerId){
         }
     }
     if (idExist == false) {
-        return "Id " + playerId + "does not exist"
+        return "Id " + playerId + " does not exist"
     }
 }
 
@@ -123,7 +131,7 @@ function addPlayer(addName, addPosition, addTeam) {
         }
     }
 
-    players.allPlayers.push({ id: idValue + 1, name: addName, posistion: addPosition, team: addTeam })
+    players.allPlayers.push({ id: idValue + 1, name: addName, position: addPosition, team: addTeam })
 
     return players
 }
