@@ -41,7 +41,7 @@ app.delete("/deleteplayer/:id", (req, res) => {
     removePlayerId = req.params.id
     deletePlayer(removePlayerId)
     res.send("Player " + req.params.id + " deleted")
-    res.sendFile(__dirname + "/index.html")//
+    //res.sendFile(__dirname + "/index.html")//
 })
 
 app.post("/addplayer", (req, res) => {
@@ -139,3 +139,17 @@ app.listen(PORT, () => {
     console.log("listening to " + PORT)
     console.log(players)
 })
+
+
+document.getElementById("btnSubmit").addEventListener("click", addPlayerHTML)
+
+function addPlayerHTML(){
+
+    document.getElementById("name").innerHTML = addName;
+    document.getElementById("position").innerHTML = addPosition;
+    document.getElementById("team").innerHTML = addTeam;
+
+    addPlayer(addName, addPosition, addTeam)
+}
+
+

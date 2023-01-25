@@ -4,24 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Player API</title>
 </head>
 <body>
-    <div class="div1">
-        <h1>Welcome</h1>
-        <h2>Football player API</h2>
-        <h3>The endpoints are:</h3>
-        
-        <div class="endpoints">
+    <div class="container-sm">
 
+        <div class="page-header text-center">
+            <h2 class="display-3"> Football player API</h2>
+            <h3>The endpoints are:</h3>
+        </div>
+        
+        <div class="text-center">
+            
             <p>/players</p>
             <p>/deleteplayer/{id}</p>
-            <p>/addplayer/{name}/{position}/{team}</p>
-            <p>/updateplayer/{id}/{name}/{position}/{team}</p>
-        </div>
-       
+            <p>/addplayer</p>
+            <p>/update/{id}</p>
+            <p>To add player send JSON containing name, poistion, team to endpoint /addplayer</p>
+            <p>To update player send JSON containing id, name, poistion, team to endpoint /update</p>
 
+            <form action="input">
+                <label for="name">Player Name</label>
+                <input type="text" id="name">
+                <label for="poistion">Player position</label>
+                <input type="text" id="position">
+                <label for="team">Team</label>
+                <input type="text" id="team">
+                <input type="submit" id="btnSubmit">
+            </form>
+            
+            
+            <button type="button" class="btn btn-success btn-lg">Get Players</button>
+            
+            <button type="button" class="btn btn-warning btn-lg">Detele Player</button>
+            <button type="button" class="btn btn-info btn-lg">Info</button>
+            
+            
+            
+        </div>
     </div>
+    <script src="app.js"></script>
 </body>
 </html>
