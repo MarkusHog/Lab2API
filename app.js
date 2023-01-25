@@ -10,8 +10,8 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json({extended: true}))
 app.use(express.json())
-//const PORT = process.env.PORT || 3000
-const PORT = 3000
+const PORT = process.env.PORT || 3000
+//const PORT = 3000
 
 const players = {
     allPlayers: [
