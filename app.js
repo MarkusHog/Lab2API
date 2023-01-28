@@ -52,14 +52,6 @@ app.post("/addplayer", (req, res) => {
     res.send("player "+ addName + " added")
 });
 
-// app.get("/update/:updateId/:addName/:addPosition/:addTeam", (req, res) => {
-//     updateId = Number(req.params.updateId)
-//     updateName = req.params.addName
-//     updatePosition = req.params.addPosition
-//     updateTeam = req.params.addTeam
-//     res.send(updatePlayer(updateId, updateName, updatePosition, updateTeam))
-// })
-
 app.put("/update/:id", (req, res) => {
     updateId = req.params.id
     updateName = req.body.name
@@ -75,7 +67,7 @@ function updatePlayer(updateId, updateName, updatePosition, updateTeam) {
             idExist = true;
             updatedPlayer = {id: updateId, name: updateName, position: updatePosition, team: updateTeam}
             players.allPlayers[i] = updatedPlayer
-            return updatedPlayer
+            return "Player updated"
         }
 
     }
