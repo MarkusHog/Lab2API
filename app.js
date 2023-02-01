@@ -45,7 +45,7 @@ app.delete("/deleteplayer/:id", (req, res) => {
 })
 
 app.post("/addplayer", (req, res) => {
-    addName = req.body.name
+    addName = Number(req.body.name)
     addPosition = req.body.position
     addTeam = req.body.team
     addPlayer(addName, addPosition, addTeam)
